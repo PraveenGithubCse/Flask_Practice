@@ -38,3 +38,4 @@ def create_app(db_url = None): #create_app --> flask automatically detaects the 
     api.register_blueprint(StoreBlueprint)
 
     return app
+app = create_app()
