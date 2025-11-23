@@ -1,1 +1,5 @@
-# Flask_Practice
+Flask\_Practice:
+
+Initiating the Flask App (SQLAlchemy)
+===
+
