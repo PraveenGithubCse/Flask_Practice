@@ -22,7 +22,7 @@ def create_app(db_url = None): #create_app --> flask automatically detaects the 
     app.config["OPENAPI_SWAGGER_UI_URL"] = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
     # app.config["SQLALCHEMY_DATABASE_URI"] = db_url or os.getenv("DATABASE_URL","sqlite:///data.db") #connection to db by passing url or by givinng that sqlite url
     # app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or "postgresql+psycopg2://postgres:Postgres%40123@localhost:5432/postgres"
+    app.config["SQLALCHEMY_DATABASE_URI"] = db_url or "postgresql+psycopg2://c78a6dc1e0575a457b24803304945eab653189d84f22a6036e750f1838efa1e7:sk_VoUGzqjlB3TGuLAgrJ9u6@db.prisma.io:5432/postgres?sslmode=require"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     app.config["PROPAGATE_EXCEPTIONS"] = True
     db.init_app(app)# initialize the flask sqlalchemy extension n giving to the flask app so that we can connect flask app to sqlalchemy
