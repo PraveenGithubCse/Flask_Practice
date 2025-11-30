@@ -42,6 +42,8 @@ class Item(MethodView):
         if item:
             item.name = item_data.get("name",item.name)
             item.price = item_data.get("price",item.price)
+            item.quantity = item_data.get("quantity",item.quantity)
+
         else:
             item=ItemModel(id=item_id,**item_data)
         
