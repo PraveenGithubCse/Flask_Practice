@@ -43,9 +43,36 @@ class Item(MethodView):
             item.name = item_data.get("name",item.name)
             item.price = item_data.get("price",item.price)
             item.quantity = item_data.get("quantity",item.quantity)
-
         else:
             item=ItemModel(id=item_id,**item_data)
+
+        # the below code is can be used only if the endpoint is like the /item because here we can update only one item at a time /item/{item_id}
+
+        # update_items=[]
+        # for item_data in items_data:
+        #     item_id=item_data.get(item_id)
+        #     store_id=item_data.get(store_id)
+
+        #     store=StoreModel.query.get(store_id)
+        #     if not store:
+        #         abort(400, message=f"Store ID {store_id} does not exist.")
+            
+        #     item=None
+        #     if item_id:
+        #         item = ItemModel.query.get(item_id)
+
+        #     if item:
+        #         item.name=item_data.get("name",item.name)
+        #         item.price=item_data.get("price",item.price)
+        #         item.store_id=store_id
+
+        #     else:
+        #         item=ItemModel(**item_data)
+        #         db.session.add(item)
+
+            
+        #     update_items.append(item)
+
         
         try:
             db.session.add(item)
@@ -53,6 +80,7 @@ class Item(MethodView):
         except SQLAlchemyError:
             abort(500, message="An error occurred while updating the item.")
 
+        # return update_items
         return item
 
 
