@@ -11,13 +11,14 @@ class PlainItemSchema(Schema):
 class PlainStoreSchema(Schema):
     store_id = fields.Str(attribute="id",dump_only=True)
     name = fields.Str(required=True)
-    items = fields.List(fields.Nested(PlainItemSchema()), dump_only=True)
+    # items = fields.List(fields.Nested(PlainItemSchema()), dump_only=True) #client is not allowed to send this field, Field is ONLY returned in responses
+    # items = fields.List(fields.Nested(PlainItemSchema()), required=False)
 
 class ItemUpdateSchema(Schema):
     name = fields.Str()
     price = fields.Float()
     quantity = fields.Int()
-    store_id= fields.Int()
+    # store_id= fields.Int()
 
 class ItemSchema(PlainItemSchema):
     store_id = fields.Int(required=True) # load only wh en we are going to receive the data from the client 
@@ -25,4 +26,4 @@ class ItemSchema(PlainItemSchema):
     # store = fields.Int(required=True)
 
 class StoreSchema(PlainStoreSchema):
-    item_id = fields.Nested(PlainItemSchema(), dump_only=True) # it will return the data when it recieve the data from the client 
+    items = fields.List(fields.Nested(PlainItemSchema()), dump_only=True) # it will return the data when it recieve the data from the client 
